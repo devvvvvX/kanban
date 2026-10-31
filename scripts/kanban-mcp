@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+# macOS Kanban MCP Release Binary Launcher
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Support both Contents/MacOS (sibling to Resources), Contents/Resources (sibling to mcp), and local repo dist
+if [ -d "${SCRIPT_DIR}/../Resources/mcp" ]; then
+  RESOURCES_DIR="${SCRIPT_DIR}/../Resources/mcp"
+elif [ -d "${SCRIPT_DIR}/mcp" ]; then
+  RESOURCES_DIR="${SCRIPT_DIR}/mcp"
+elif [ -d "${SCRIPT_DIR}/../mcp" ]; then
+  RESOURCES_DIR="${SCRIPT_DIR}/../mcp"
+elif [ -d "${SCRIPT_DIR}/../dist/mcp" ]; then
+  RESOURCES_DIR="${SCRIPT_DIR}/../dist/mcp"
+else
+  RESOURCES_DIR="${SCRIPT_DIR}/../Resources/mcp"
+fi
+
+# Locate Node.js executable
+NODE_BIN=""
+if command -v node >/dev/null 2>&1; then
+  NODE_BIN="$(command -v node)"
+elif [ -x "/opt/homebrew/bin/node" ]; then
+  NODE_BIN="/opt/homebrew/bin/node"
+elif [ -x "/usr/local/bin/node" ]; then
+  NODE_BIN="/usr/local/bin/node"
+elif [ -d "${HOME}/.nvm/versions/node" ]; then
+  LATEST_NVM="$(ls -1 "${HOME}/.nvm/versions/node" 2>/dev/null | tail -n 1)"
+  if [ -n "${LATEST_NVM}" ] && [ -x "${HOME}/.nvm/versions/node/${LATEST_NVM}/bin/node" ]; then
+    NODE_BIN="${HOME}/.nvm/versions/node/${LATEST_NVM}/bin/node"
+  fi
+fi
+
+if [ -z "${NODE_BIN}" ]; then
+  echo "[Kanban MCP Error] Node.js runtime not found. Please ensure Node.js is installed." >&2
+  exit 1
+fi
+
+# Point directly to native macOS release database in Application Support
+export KANBAN_DB_PATH="${KANBAN_DB_PATH:-${HOME}/Library/Application Support/com.kanban.macos/kanban.db}"
+
+# Read KANBAN_AUTH_TOKEN from ~/.kanban-env (or ~/kanban-env, ~/.env) if not already set in environment
+if [ -z "${KANBAN_AUTH_TOKEN}" ]; then
+  for ENV_FILE in "${HOME}/.kanban-env" "${HOME}/kanban-env" "${HOME}/.env"; do
+    if [ -f "${ENV_FILE}" ]; then
+      TOKEN_FROM_ENV="$(grep -E '^[[:space:]]*KANBAN_AUTH_TOKEN=' "${ENV_FILE}" 2>/dev/null | head -n 1 | cut -d'=' -f2- | tr -d '"'"'" | tr -d '\r' | xargs)"
+      if [ -n "${TOKEN_FROM_ENV}" ]; then
+        export KANBAN_AUTH_TOKEN="${TOKEN_FROM_ENV}"
+        break
+      fi
+    fi
+  done
+fi
+
+exec "${NODE_BIN}" "${RESOURCES_DIR}/cli.js" "$@"

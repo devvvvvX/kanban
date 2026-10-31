@@ -1,0 +1,80 @@
+# Node & Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Local SQLite Database & Data
+data/
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+
+# Build Outputs
+dist/
+dist-ssr/
+dist-release/
+build/
+out/
+release/
+qa/
+*.dmg
+*.dmg.sha256
+*.local
+
+# Tauri Desktop Build Artifacts
+src-tauri/target/
+src-tauri/binaries/
+src-tauri/gen/
+
+# Vite Cache
+.vite/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Test & Coverage Outputs
+coverage/
+*.lcov
+.nyc_output/
+
+# macOS System Files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editor & IDE Directories
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+node_modules/.package-lock.json
+node_modules/.vite/vitest/da39a3ee5e6b4b0d3255bfef95601890afd80709/results.json

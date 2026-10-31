@@ -1,0 +1,68 @@
+{
+  "name": "macos-kanban-board",
+  "version": "1.0.0",
+  "description": "Offline-first, native macOS Kanban & personal project management app with relational tracking, deep search, and MCP agent integration.",
+  "author": "devvvvvX",
+  "license": "MIT",
+  "homepage": "https://github.com/devvvvvX/kanban#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devvvvvX/kanban.git"
+  },
+  "bugs": {
+    "url": "https://github.com/devvvvvX/kanban/issues"
+  },
+  "keywords": [
+    "kanban",
+    "macos",
+    "tauri",
+    "react",
+    "typescript",
+    "mcp",
+    "model-context-protocol",
+    "offline-first",
+    "sqlite",
+    "productivity"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build:mcp": "esbuild src/lib/mcp/cli.ts --bundle --platform=node --format=esm --target=node20 --banner:js=\"import { createRequire } from 'node:module'; import { fileURLToPath } from 'node:url'; import path from 'node:path'; const require = createRequire(import.meta.url); const __filename = fileURLToPath(import.meta.url); const __dirname = path.dirname(__filename);\" --outfile=dist/mcp/cli.js --external:better-sqlite3 && cp -f public/sql-wasm.wasm dist/mcp/sql-wasm.wasm",
+    "build": "tsc && vite build && npm run build:mcp",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "tauri": "tauri",
+    "build:dmg": "./scripts/build-dmg.sh",
+    "build:dmg:universal": "./scripts/build-dmg.sh --target universal-apple-darwin",
+    "update:app": "./scripts/update-local-app.sh"
+  },
+  "dependencies": {
+    "@node-rs/argon2": "^2.2.2",
+    "@tauri-apps/api": "^2.12.4",
+    "@tauri-apps/plugin-opener": "^2.7.2",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/marked": "^5.0.2",
+    "@types/sql.js": "^1.4.11",
+    "better-sqlite3": "^13.0.3",
+    "clsx": "^2.1.1",
+    "hash-wasm": "^4.12.0",
+    "lucide-react": "^1.16.0",
+    "marked": "^18.1.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sql.js": "^1.15.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "@tauri-apps/cli": "^2.12.4",
+    "@types/node": "^22.13.4",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.5"
+  }
+}
