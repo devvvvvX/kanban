@@ -546,7 +546,9 @@
 }
 
 /* Global Reset and Styles */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -575,7 +577,8 @@ body {
   color: var(--text-primary);
 }
 
-input, textarea {
+input,
+textarea {
   caret-color: var(--accent-blue);
 }
 
@@ -584,12 +587,16 @@ input, textarea {
   -webkit-app-region: drag;
 }
 
-.no-drag, [data-no-drag] {
+.no-drag,
+[data-no-drag] {
   -webkit-app-region: no-drag;
 }
 
 /* Form Control Reset */
-button, input, select, textarea {
+button,
+input,
+select,
+textarea {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
@@ -1808,13 +1815,25 @@ select option {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleUp {
-  from { opacity: 0; transform: scale(0.97); }
-  to { opacity: 1; transform: scale(1); }
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Recovery Monospace Key Group */
@@ -1904,6 +1923,7 @@ select option {
   from {
     transform: translateX(100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -1913,6 +1933,7 @@ select option {
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -2740,9 +2761,12 @@ select option {
    ========================================================================== */
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.45;
   }
@@ -2751,6 +2775,7 @@ select option {
 /* Kanban Card */
 .kanban-card {
   min-height: 72px;
+  flex-shrink: 0;
   background-color: var(--bg-card);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -2949,6 +2974,7 @@ select option {
     opacity: 0;
     transform: scale(0.96);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -3216,7 +3242,7 @@ select option {
   padding: var(--space-3);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .kanban-column-empty {
@@ -3860,12 +3886,34 @@ select option {
   margin-bottom: 0.5em;
 }
 
-.markdown-content h1 { font-size: 1.4rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.3em; }
-.markdown-content h2 { font-size: 1.25rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.2em; }
-.markdown-content h3 { font-size: 1.1rem; }
-.markdown-content h4 { font-size: 1.0rem; }
-.markdown-content h5 { font-size: 0.9rem; }
-.markdown-content h6 { font-size: 0.85rem; color: var(--text-secondary); }
+.markdown-content h1 {
+  font-size: 1.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.3em;
+}
+
+.markdown-content h2 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.2em;
+}
+
+.markdown-content h3 {
+  font-size: 1.1rem;
+}
+
+.markdown-content h4 {
+  font-size: 1.0rem;
+}
+
+.markdown-content h5 {
+  font-size: 0.9rem;
+}
+
+.markdown-content h6 {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
 
 .markdown-content p {
   margin-top: 0;
@@ -3883,7 +3931,7 @@ select option {
   margin-bottom: 0.25em;
 }
 
-.markdown-content li > input[type="checkbox"] {
+.markdown-content li>input[type="checkbox"] {
   margin-right: 0.5em;
   cursor: pointer;
   accent-color: var(--accent-blue);
@@ -3986,33 +4034,48 @@ select option {
   border-left-color: #3B82F6;
   background-color: rgba(59, 130, 246, 0.08);
 }
-.callout-note .callout-title { color: #3B82F6; }
+
+.callout-note .callout-title {
+  color: #3B82F6;
+}
 
 .callout-tip {
   border-left-color: #10B981;
   background-color: rgba(16, 185, 129, 0.08);
 }
-.callout-tip .callout-title { color: #10B981; }
+
+.callout-tip .callout-title {
+  color: #10B981;
+}
 
 .callout-important {
   border-left-color: #8B5CF6;
   background-color: rgba(139, 92, 246, 0.08);
 }
-.callout-important .callout-title { color: #8B5CF6; }
+
+.callout-important .callout-title {
+  color: #8B5CF6;
+}
 
 .callout-warning {
   border-left-color: #F59E0B;
   background-color: rgba(245, 158, 11, 0.08);
 }
-.callout-warning .callout-title { color: #F59E0B; }
+
+.callout-warning .callout-title {
+  color: #F59E0B;
+}
 
 .callout-caution,
 .callout-danger {
   border-left-color: #EF4444;
   background-color: rgba(239, 68, 68, 0.08);
 }
+
 .callout-caution .callout-title,
-.callout-danger .callout-title { color: #EF4444; }
+.callout-danger .callout-title {
+  color: #EF4444;
+}
 
 .callout-box-custom,
 .callout-box {
@@ -4020,8 +4083,13 @@ select option {
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .spin-animation {
@@ -4395,11 +4463,11 @@ body,
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.toggle-switch-input:checked + .toggle-switch-slider {
+.toggle-switch-input:checked+.toggle-switch-slider {
   background-color: #10B981;
 }
 
-.toggle-switch-input:checked + .toggle-switch-slider::before {
+.toggle-switch-input:checked+.toggle-switch-slider::before {
   transform: translateX(18px);
 }
 
@@ -4428,6 +4496,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
     opacity: 0;
     transform: translateY(-16px) scale(0.96);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -4435,11 +4504,27 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
 }
 
 @keyframes macRingingWobble {
-  0%, 100% { transform: rotate(0deg); }
-  20% { transform: rotate(-12deg); }
-  40% { transform: rotate(10deg); }
-  60% { transform: rotate(-8deg); }
-  80% { transform: rotate(6deg); }
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(-12deg);
+  }
+
+  40% {
+    transform: rotate(10deg);
+  }
+
+  60% {
+    transform: rotate(-8deg);
+  }
+
+  80% {
+    transform: rotate(6deg);
+  }
 }
 
 .mac-bell-ringing {
@@ -4564,6 +4649,3 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator:hover {
   font-weight: 500;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-
-
-
