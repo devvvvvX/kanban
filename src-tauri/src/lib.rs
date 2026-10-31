@@ -71,7 +71,10 @@ fn open_external_url(url: String) -> Result<(), String> {
     #[cfg(target_os = "macos")]
     {
         use std::process::Command;
-        let _ = Command::new("open").arg(&url).spawn().map_err(|e| e.to_string())?;
+        let _ = Command::new("open")
+            .arg(&url)
+            .spawn()
+            .map_err(|e| e.to_string())?;
     }
     #[cfg(not(target_os = "macos"))]
     {
@@ -92,9 +95,7 @@ fn send_native_notification(
     {
         use std::process::Command;
 
-        let escape_str = |s: &str| -> String {
-            s.replace('\\', "\\\\").replace('"', "\\\"")
-        };
+        let escape_str = |s: &str| -> String { s.replace('\\', "\\\\").replace('"', "\\\"") };
 
         let clean_title = escape_str(&title);
         let clean_body = escape_str(&body);
