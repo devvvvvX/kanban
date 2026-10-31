@@ -43,6 +43,9 @@ jobs:
       - name: Run Vitest test suites
         run: npm test
 
+      - name: Build frontend & MCP bundle
+        run: npm run build
+
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
