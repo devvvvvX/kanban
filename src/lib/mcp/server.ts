@@ -210,7 +210,7 @@ export class McpServer {
           },
           serverInfo: {
             name: "macos-kanban-mcp",
-            version: "1.0.0",
+            version: "1.0.1",
           },
         };
         return { jsonrpc: "2.0", id: responseId, result };

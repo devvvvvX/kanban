@@ -1,6 +1,6 @@
 {
   "name": "macos-kanban-board",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Offline-first, native macOS Kanban & personal project management app with relational tracking, deep search, and MCP agent integration.",
   "author": "devvvvvX",
   "license": "MIT",

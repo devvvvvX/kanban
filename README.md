@@ -2,7 +2,7 @@
 
 > **Offline-first, native macOS personal project management & customizable Kanban workspace with first-class Model Context Protocol (MCP) agent integration.**
 
-[![Release](https://img.shields.io/badge/Release-v1.0.0-blue?style=flat-square)](https://github.com/devvvvvX/kanban/releases)
+[![Release](https://img.shields.io/badge/Release-v1.0.1-blue?style=flat-square)](https://github.com/devvvvvX/kanban/releases)
 [![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-black?style=flat-square&logo=apple)](https://apple.com)
 [![Tauri](https://img.shields.io/badge/Tauri-2.0-orange?style=flat-square&logo=tauri)](https://tauri.app)
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://react.dev)
